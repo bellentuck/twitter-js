@@ -7,7 +7,7 @@
   </div>
   <div class="row">
     <div class="col-md-3">
-      <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
+      <img class="profilePicture" id="currentUser" src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
       <b>Your Name</b><br>
       100 followers
     </div>
@@ -15,9 +15,17 @@
 
       <!-- display tweets here -->
       {% for tweet in tweets %}
-        <li>{{tweet.content}}</li>
+      <div class="row">
+        <a href="/users/{{tweet.userName}}">
+          <img src="http://pipsum.com/435x310.jpg" class="profilePicture col-sm-3">
+        </a>
+          <div class="col-sm-9">
+        <h5>{{tweet.name}}</h5>
+        <p>{{tweet.content}}</p>
+      </div>
+      </div>
+      <br/>
       {% endfor %}
-
     </div>
   </div>
 

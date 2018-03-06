@@ -3,8 +3,8 @@ const _ = require('lodash');
 const data = [];
 
 
-  function add (name, content) {
-    data.push({ name: name, content: content });
+  function add (name, content, userName) {
+    data.push({ name: name, content: content, userName: userName });
   }
 
   function list () {
@@ -36,6 +36,8 @@ const data = [];
   };
 
   for (let i = 0; i < 10; i++) {
-    module.exports.add( getFakeName(), getFakeTweet() );
+    let name = getFakeName();
+    let userName = name.split(' ')[0];
+    module.exports.add( name, getFakeTweet(), userName );
   }
 

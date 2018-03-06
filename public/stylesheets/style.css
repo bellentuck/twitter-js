@@ -31,6 +31,16 @@ body {
 .container .text-muted {
   margin: 20px 0;
 }
+.profilePicture {
+  height: 100px;
+  width: 120px;
+}
+
+#currentUser {
+  height: 130px;
+  width: 130px;
+  box-shadow: 5px 5px 3px grey;
+}
 
 #footer > .container {
   padding-left: 15px;
