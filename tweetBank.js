@@ -30,14 +30,30 @@ const data = [];
     return randArrayEl(fakeFirsts) + " " + randArrayEl(fakeLasts);
   };
 
+  const getFakeUsername = function(usedUsernames) {
+    const fakeUsernames = ['realDonaldTrump', 'plushPossum', 'undefined', 'nimit4000', 'edison', 'ben', 'joeThePlumber', 'twitterUser2018', 'russianBot', 'hillaryClinton'];
+    let username = randArrayEl(fakeUsernames);
+    while (usedUsernames.includes(username)) {
+      username = randArrayEl(fakeUsernames);
+    }
+    usedUsernames.push(username);
+    return {
+      username,
+      usedUsernames
+    };
+  };
+
   const getFakeTweet = function() {
     const awesome_adj = ['awesome', 'breathtaking', 'amazing', 'funny', 'sweet', 'cool', 'wonderful', 'mindblowing', 'impressive'];
     return "Fullstack Academy is " + randArrayEl(awesome_adj) + "! The instructors are just so " + randArrayEl(awesome_adj) + ". #fullstacklove #codedreams";
   };
 
+  let usedUsernames = [];
   for (let i = 0; i < 10; i++) {
     let name = getFakeName();
-    let userName = name.split(' ')[0];
-    module.exports.add( name, getFakeTweet(), userName );
+    let userNameData = getFakeUsername(usedUsernames);
+    usedUsernames = userNameData.usedUsernames;
+    let username = userNameData.username;
+    module.exports.add( name, getFakeTweet(), username );
   }
 

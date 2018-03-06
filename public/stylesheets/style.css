@@ -42,6 +42,10 @@ body {
   box-shadow: 5px 5px 3px grey;
 }
 
+.username {
+  font-style: italic;
+}
+
 #footer > .container {
   padding-left: 15px;
   padding-right: 15px;

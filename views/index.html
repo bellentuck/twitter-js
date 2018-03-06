@@ -10,6 +10,21 @@
       <img class="profilePicture" id="currentUser" src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
       <b>Your Name</b><br>
       100 followers
+
+      <br/><br/>
+      {% if showForm %}
+        <form action="/tweets" method="POST">
+          <h4>Write a new tweet:</h4>
+          <label for="name_field">Name:</label><br />
+          <input name="name" type="text" id="name_field" value={{userName}}>
+          <br />
+          <label for="text_field">Text:</label>
+          <input name="text" type="text" id="text_field" style="width: 250px;" value="your tweet here"/>
+
+          <input type="submit" value="Submit" />
+        </form>
+      {% endif %}
+
     </div>
     <div class="col-md-9">
 
@@ -20,7 +35,7 @@
           <img src="http://pipsum.com/435x310.jpg" class="profilePicture col-sm-3">
         </a>
           <div class="col-sm-9">
-        <h5>{{tweet.name}}</h5>
+        <h5>{{tweet.name}} <span class="username">@{{tweet.userName}}</span></h5>
         <p>{{tweet.content}}</p>
       </div>
       </div>
