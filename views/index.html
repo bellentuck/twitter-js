@@ -35,8 +35,8 @@
           <img src="http://pipsum.com/435x310.jpg" class="profilePicture col-sm-3">
         </a>
           <div class="col-sm-9">
-        <h5>{{tweet.name}} <span class="username">@{{tweet.userName}}</span></h5>
-        <p>{{tweet.content}}</p>
+        <h5><a href="/users/{{tweet.userName}}">{{tweet.name}}</a> <span class="username">@{{tweet.userName}}</span></h5>
+        <p><a class="tweetText" href="/tweets/{{tweet.id}}">{{tweet.content}}</a></p>
       </div>
       </div>
       <br/>

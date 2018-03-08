@@ -8,15 +8,22 @@ const bodyParser = require('body-parser');
 const socketio = require('socket.io');
 
 
-// BODY-PARSER
-// create application/json parser
-app.use(bodyParser.json());
-// create application/x-www-form-urlencoded parser
-app.use(bodyParser.urlencoded({ extended: false }));
+// TEMPLATING BOILERPLATE SETUP ------------------ //
+app.set('view engine', 'html');
+app.engine('html', nunjucks.render);
+nunjucks.configure('views', { noCache: true });
 
 
-// MORGAN CONFIG ------------------ //
+// LOGGING MIDDLEWARE ------------------ //
 app.use(morgan('dev'));
+
+// BODY-PARSING MIDDLEWARE
+// create application/x-www-form-urlencoded parser
+app.use(bodyParser.urlencoded({ extended: true }));  // true? false?
+// for ajax requests:
+app.use(bodyParser.json());
+
+
 
 // STYLES CONFIG ------------------ //
 app.use(express.static('public'))
@@ -34,7 +41,7 @@ const io = socketio.listen(server);
 app.use('/', routes(io));
 
 
-// DATA ------------------ //
+// SEED DATA ------------------ //
 const data = {
   title: 'An Example',
   people: [
@@ -54,13 +61,3 @@ const people = [
   {name: 'Stacker'},
   {name: 'Son'}
 ];
-
-
-// TEMPLATING VIA NUNJUCKS ------------------ //
-app.set('view engine', 'html');
-app.engine('html', nunjucks.render);
-nunjucks.configure('views', {
-  noCache: true
-});
-
-

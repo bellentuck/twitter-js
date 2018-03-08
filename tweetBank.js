@@ -2,9 +2,22 @@ const _ = require('lodash');
 
 const data = [];
 
+function* idMaker() {
+  let index = 0;
+  while(true) yield index++;
+}
+let id = idMaker();
+
 
   function add (name, content, userName) {
-    data.push({ name: name, content: content, userName: userName });
+    let newUser = {
+      name: name,
+      content: content,
+      userName: userName,
+      id: id.next().value
+    };
+    data.push(newUser);
+    // console.log(newUser);
   }
 
   function list () {
